@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<!--<script type="text/javascript">
+		$(function(){
+			var d=window.location.href.split('?')[1].split('=')[1];
+			console.log(d)
+			$.ajax({
+				url:"http://localhost:3000/item/detail",
+				type:"post",
+				data:{id:d},
+				dataType:'json',
+				success:function(e){
+					console.log(e)
+					$('body').html("<p>"+e[0].details+"</p>")
+				}
+			})
+		})
+	</script>-->
+	<script type="text/javascript">
+		var id=window.location.href.split('=')[1]
+		console.log(id)
+		if(id=='index'){
+			$.ajax({
+            url:"http://localhost:3000/item/list",
+            type:'post',
+            dataType:'json',
+            success:function(e){
+            	for(var i in e){
+            		$('body').append("<p>"+e[i].date+"</p>"+"<a href='index2.html?id="+e[i].id+"'>"+e[i].title+"</a>")
+            	}
+            }
+        })
+		}else{
+			$.ajax({
+				url:"http://localhost:3000/item/detail",
+				type:"post",
+				data:{id:id},
+				dataType:'json',
+				success:function(e){
+					console.log(e)
+					$('body').html("<p>"+e[0].details+"</p>")
+				}
+			})
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

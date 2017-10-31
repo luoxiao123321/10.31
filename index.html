@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			 $.ajax({
+            url:"http://localhost:3000/item/list",
+            type:'post',
+            dataType:'json',
+            success:function(e){
+            	for(var i in e){
+            		$('.box_u_n').append("<p>"+e[i].date+"</p>"+"<a href='index2.html?id="+e[i].id+"'>"+e[i].title+"</a>")
+            	}
+            }
+        })
+		})
+	</script>
+</head>
+<body>
+	<div class="wary">
+		<nav>
+			<div>
+				<ul>
+					<li><a href="">首页</a></li>
+					<li><a href="">走进瑞森</a></li>
+					<li><a href="index2.html?id=index">新闻动态</a></li>
+					<li><a href="">项目管理</a></li>
+					<li><a href="">创新科技</a></li>
+					<li><a href="">企业文化</a></li>
+					<li><a href="">加入我们</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="banner"></div>
+		<div class="box">
+			<div class="box_u">
+				<img src="img/1.png">
+				<div class="box_u_n">
+					
+				</div>
+			</div>
+			<div class="box_u"></div>
+			<div class="box_u"></div>
+		</div>
+	</div>
+</body>
+</html>
